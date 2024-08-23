@@ -26,8 +26,8 @@ public class ConsumeRestUtility {
     }
 
 
-    @Bean
-    @Profile("!Test")
+//    @Bean
+//    @Profile("!test")
     public CommandLineRunner getRandomQuote(RestTemplate restTemplate) throws Exception{
         return args->{
 
