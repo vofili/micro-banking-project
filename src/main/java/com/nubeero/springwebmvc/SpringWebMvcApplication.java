@@ -5,6 +5,7 @@ import com.nubeero.springwebmvc.calculator.Operation;
 import com.nubeero.springwebmvc.utilities.Quote;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,12 +38,8 @@ public class SpringWebMvcApplication {
 //    }
 
     @Bean
-    public ApplicationRunner doApplicationRunner(Calculator calc){
-        return args-> {
-                    calc.calculate(10,20,'+');
-                    calc.calculate(20,5,'*');
-                   // calc.calculate(30, 25, '-');
-        };
+    public ApplicationRunner calculationRunner(Calculator calc, @Value("${lhs}")int lhs, @Value("${rhs}")int rhs, @Value("${op}") char op){
+        return args-> calc.calculate(lhs,rhs,op);
     }
 
 
